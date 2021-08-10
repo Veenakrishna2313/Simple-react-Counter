@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 class Counter extends Component {
   state = {  
     count:0,
+    
 
   };
 
@@ -14,6 +15,10 @@ class Counter extends Component {
     fontWeight: "Bold"
   }
 
+  handleIncrement =()=>{
+    this.setState({count:this.state.count+1});
+
+  }
   render() { 
 
    
@@ -22,7 +27,9 @@ class Counter extends Component {
     <div>
       
       <span style ={this.styles} className={this.getBadgeClasses()}>{this.formatCount()}</span>
-      <button className="btn btn-secondary btn-sm">Increment</button>
+      <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
+
+      
 
     </div>
     );
