@@ -3,10 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 
 class Counter extends Component {
-  state = {  
-    value:this.props.counter.value   
-
-  };
+  
 
   styles={
 
@@ -14,15 +11,7 @@ class Counter extends Component {
     fontWeight: "Bold"
   }
 
-  handleIncrement =()=>{
-    this.setState({value:this.state.value+1});
-
-  }
-
-  handleDecrement =()=>{
-    this.setState({value:this.state.value-1});
-
-  }
+ 
   render() { 
 
       console.log('props',this.props);
@@ -32,8 +21,8 @@ class Counter extends Component {
     <div>
       {this.props.children}
       <span style ={this.styles} className={this.getBadgeClasses()}>{this.formatCount()}</span>
-      <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm m-3">Increment</button>
-       <button onClick={this.handleDecrement} className="btn btn-secondary btn-sm m-3">Decrement</button>
+      <button onClick={()=>this.props.onIncrement(this.props.counter)} className="btn btn-secondary btn-sm m-3">Increment</button>
+       <button onClick={()=>this.props.onDecrement(this.props.counter)} className="btn btn-secondary btn-sm m-3">Decrement</button>
        <button onClick={()=>this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-sm m-3">Delete</button>
 
       
@@ -45,14 +34,14 @@ class Counter extends Component {
 
   getBadgeClasses() {
     let classes = "badge m-3 badge-";
-    classes += this.state.value === 0 ? "warning" : "primary";
+    classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount(){
     // obj deconstruction
 
-    const {value}= this.state;
+    const {value}= this.props.counter;
 
     return value===0?"Zero" : value;
   }
