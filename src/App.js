@@ -1,13 +1,13 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Counter from './components/counter';
+import Counters from './components/counters';
 import "bootstrap/dist/css/bootstrap.css";
 
 
 function App() {
   return (
     <div className="App">
-      <Counter></Counter>
+      <Counters></Counters>
     </div>
   );
 }
